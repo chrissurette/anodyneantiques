@@ -356,6 +356,18 @@ a { color: inherit; }
   .ph3 { left: auto; right: clamp(3%, 7vw, 12%); top: 10%; }
 }
 
+/* wide desktops: the percentage/vw-based spread above keeps growing with the
+   viewport while the card size caps out, leaving oceans of blank space
+   between cards — pin a bigger card size and a fixed gap instead so the
+   trio stays a tight, centered cluster no matter how wide the screen gets */
+@media (min-width: 1300px) {
+  .collage { --ph-w: clamp(300px, 20vw, 360px); --ph-gap: 110px; }
+  .ph { width: var(--ph-w); }
+  .ph1 { left: calc(50% - var(--ph-w) * 1.5 - var(--ph-gap)); top: 6%; }
+  .ph2 { left: 50%; margin-left: calc(var(--ph-w) / -2); top: 0; }
+  .ph3 { left: auto; right: calc(50% - var(--ph-w) * 1.5 - var(--ph-gap)); top: 10%; }
+}
+
 .ph1 .ph-in { animation-delay: .15s; }
 .ph2 .ph-in { animation-delay: .3s; }
 .ph3 .ph-in { animation-delay: .45s; }

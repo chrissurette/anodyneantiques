@@ -107,6 +107,36 @@
     fitTimer = setTimeout(fitFlora, 150);
   });
 
+  /* ---------- infinite marquee ----------
+     The CSS loops by translating the track -50%, which is only seamless
+     if the track (all copies together) is at least twice the visible
+     width — otherwise the content runs out before the loop resets. Clone
+     the original unit (always an even count, so -50% lands on a whole
+     number of copies) until that holds, on load and on resize. */
+  var mqWrap = document.querySelector('.marquee');
+  var mqTrack = document.querySelector('.mq-track');
+  if (mqWrap && mqTrack && mqTrack.children.length) {
+    var mqUnit = mqTrack.children[0];
+    var mqBaseDuration = 26; // seconds, tuned for a 2-copy track — scaled below to keep speed constant
+    function fitMarquee() {
+      var containerW = mqWrap.clientWidth;
+      // measure a currently-attached copy — mqUnit itself gets detached below
+      var unitW = (mqTrack.children[0] || mqUnit).getBoundingClientRect().width || 1;
+      var copies = Math.max(2, Math.ceil((containerW * 2) / unitW));
+      if (copies % 2) copies++;
+      mqTrack.innerHTML = '';
+      for (var i = 0; i < copies; i++) mqTrack.appendChild(mqUnit.cloneNode(true));
+      mqTrack.style.animationDuration = (mqBaseDuration * copies / 2) + 's';
+    }
+    fitMarquee();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMarquee);
+    var mqTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(mqTimer);
+      mqTimer = setTimeout(fitMarquee, 150);
+    });
+  }
+
   /* ---------- footer year ---------- */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = String(new Date().getFullYear());
