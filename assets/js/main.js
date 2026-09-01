@@ -137,6 +137,39 @@
     });
   }
 
+  /* ---------- mobile menu ---------- */
+  var toggle = document.querySelector('.nav-toggle');
+  var sheet = document.getElementById('sheet');
+  if (toggle && sheet) {
+    var setMenu = function (open) {
+      sheet.hidden = !open;
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', function () { setMenu(sheet.hidden); });
+    sheet.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !sheet.hidden) setMenu(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth >= 760 && !sheet.hidden) setMenu(false); });
+  }
+
+  /* ---------- placeholder badges (local preview only) ----------
+     Images marked data-placeholder="…" are stand-ins for real photos.
+     Show a small tag over them on localhost so they're easy to spot;
+     never in production. */
+  if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+    document.querySelectorAll('img[data-placeholder]').forEach(function (img) {
+      var host = img.parentElement;
+      if (!host) return;
+      if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+      var b = document.createElement('span');
+      b.className = 'placeholder-badge';
+      b.textContent = 'placeholder';
+      b.title = img.getAttribute('data-placeholder');
+      host.appendChild(b);
+    });
+  }
+
   /* ---------- footer year ---------- */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = String(new Date().getFullYear());
