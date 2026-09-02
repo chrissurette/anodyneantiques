@@ -138,19 +138,34 @@
   }
 
   /* ---------- mobile menu ---------- */
-  var toggle = document.querySelector('.nav-toggle');
+  /* There can be more than one opener (the sticky header's hamburger and,
+     on the home page, one in the hero's top bar) plus a close button inside
+     the sheet itself — they all drive the same state. */
+  var toggles = Array.prototype.slice.call(document.querySelectorAll('.nav-toggle'));
+  var closers = Array.prototype.slice.call(document.querySelectorAll('.sheet-close'));
   var sheet = document.getElementById('sheet');
-  if (toggle && sheet) {
+  if (toggles.length && sheet) {
+    var lastOpener = null;
     var setMenu = function (open) {
       sheet.hidden = !open;
       document.body.classList.toggle('nav-open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      toggles.forEach(function (t) {
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        t.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+      if (open) {
+        var first = sheet.querySelector('a');
+        if (first) first.focus();
+      } else if (lastOpener) {
+        lastOpener.focus();
+      }
     };
-    toggle.addEventListener('click', function () { setMenu(sheet.hidden); });
+    toggles.forEach(function (t) {
+      t.addEventListener('click', function () { lastOpener = t; setMenu(sheet.hidden); });
+    });
+    closers.forEach(function (c) { c.addEventListener('click', function () { setMenu(false); }); });
     sheet.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !sheet.hidden) setMenu(false); });
-    window.addEventListener('resize', function () { if (window.innerWidth >= 760 && !sheet.hidden) setMenu(false); });
   }
 
   /* ---------- placeholder badges (local preview only) ----------

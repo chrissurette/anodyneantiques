@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=63730fb8">
+  <link rel="stylesheet" href="/assets/css/style.css?v=33a0a3a7">
 
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Store","@id":"https://anodyneantiques.com/#business","name":"Anodyne Antiques","description":"Curated antiques shop in Naples, Florida — furniture, sterling silver, art, porcelain, and curiosities — plus estate services, evaluations, consignment and auction placement for families, executors and trustees across Southwest Florida.","url":"https://anodyneantiques.com/","telephone":"+12394048505","email":"anodyneantiques@gmail.com","image":"https://anodyneantiques.com/assets/img/og.jpg","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"6240 Shirley St, Ste 104","addressLocality":"Naples","addressRegion":"FL","postalCode":"34109","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"11:00","closes":"15:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"16:00"}],"areaServed":[{"@type":"City","name":"Naples"},{"@type":"City","name":"Marco Island"},{"@type":"City","name":"Bonita Springs"},{"@type":"City","name":"Estero"},{"@type":"City","name":"Fort Myers"},{"@type":"City","name":"Cape Coral"}]}]}</script>
 </head>
@@ -38,6 +38,7 @@
       <a href="/estate-services/">Estate Services</a>
       <a href="/auction-services/">Auctions</a>
       <a href="/sell/">Sell to Us</a>
+      <a href="/guides/">Guides</a>
       <a href="/contact/">Visit</a>
     </nav>
     <a class="pill pill-ox mini-cta" href="/#visit">Plan a Visit</a>
@@ -46,9 +47,11 @@
 
   <!-- Mobile menu sheet -->
   <div class="sheet" id="sheet" hidden>
+    <button class="sheet-close" type="button" aria-label="Close menu">Close <span aria-hidden="true">✕</span></button>
     <div class="sheet-in">
       <div class="sheet-group"><span class="kicker">The shop</span><a href="/" aria-current="page">Home</a><a href="/antiques/">Antiques &amp; curiosities</a><a href="/art/">Art, gilt &amp; mirrors</a></div>
       <div class="sheet-group"><span class="kicker">Services</span><a href="/estate-services/">Estate services</a><a href="/auction-services/">Auction placement</a><a href="/appraisals/">Evaluations &amp; appraisal guidance</a><a href="/consignment/">Consignment</a><a href="/sell/">Sell to us</a><a href="/areas/">Areas we serve</a><a href="/services/">All services</a></div>
+      <div class="sheet-group"><span class="kicker">Reading</span><a href="/guides/">Guides &amp; advice</a></div>
       <div class="sheet-group"><span class="kicker">Visit</span><a href="/about/">About the shop</a><a href="/contact/">Contact, hours &amp; directions</a></div>
       <a class="pill pill-ox sheet-cta" href="tel:+12394048505">Call (239) 404-8505</a>
     </div>
@@ -59,7 +62,10 @@
     <div class="hero-top">
       <span class="ht-left">Antiques &amp; Curiosities</span>
       <span class="ht-mid">Naples, <b>Florida</b></span>
-      <a class="ht-right" href="tel:+12394048505">(239)&nbsp;404-8505</a>
+      <span class="ht-end">
+        <a class="ht-right" href="tel:+12394048505">(239)&nbsp;404-8505</a>
+        <button class="nav-toggle ht-menu" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span class="nt-bar"></span><span class="nt-bar"></span><span class="nt-label">Menu</span></button>
+      </span>
     </div>
 
     <div class="flora" aria-hidden="true">
@@ -265,6 +271,7 @@
       <div class="foot-col"><span class="foot-h">Services</span><a href="/estate-services/">Estate services</a><a href="/auction-services/">Auction placement</a><a href="/appraisals/">Evaluations &amp; appraisal guidance</a><a href="/consignment/">Consignment</a><a href="/sell/">Sell to us</a><a href="/services/">All services</a></div>
       <div class="foot-col"><span class="foot-h">The shop</span><a href="/antiques/">Antiques &amp; curiosities</a><a href="/art/">Art, gilt &amp; mirrors</a><a href="/about/">About</a><a href="/contact/">Contact &amp; hours</a></div>
       <div class="foot-col"><span class="foot-h">Areas we serve</span><a href="/estate-services/bonita-springs/">Bonita Springs</a><a href="/estate-services/fort-myers/">Fort Myers</a><a href="/estate-services/marco-island/">Marco Island</a><a href="/areas/">All areas</a></div>
+      <div class="foot-col"><span class="foot-h">Guides</span><a href="/guides/estate-sale-vs-auction-vs-buyout/">Estate Sale vs. Auction vs. Buyout</a><a href="/guides/florida-probate-and-personal-property/">Florida Probate &amp; Personal Property</a><a href="/guides/how-high-end-auction-houses-work/">How Auction Houses Work</a><a href="/guides/how-to-choose-an-estate-liquidator/">Choosing an Estate Liquidator</a><a href="/guides/how-to-read-silver-hallmarks/">Reading Silver Hallmarks</a><a href="/guides/">All guides</a></div>
       <div class="foot-col foot-visit"><span class="foot-h">Visit</span><address>6240 Shirley St, Ste 104<br>Naples, FL 34109</address><a href="tel:+12394048505">(239) 404-8505</a><a href="mailto:anodyneantiques@gmail.com">anodyneantiques@gmail.com</a><span class="foot-hours">Mon–Fri 11–3 · Sat 11–4 · Sun closed · &amp; by appointment</span></div>
     </div>
     <div class="foot-word" aria-hidden="true" data-t="ANODYNE">ANODYNE</div>
@@ -282,6 +289,6 @@
   </footer>
 
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
-  <script src="/assets/js/main.js?v=fc46b42f" defer></script>
+  <script src="/assets/js/main.js?v=4ec670e6" defer></script>
 </body>
 </html>

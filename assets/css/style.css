@@ -758,9 +758,43 @@ body.nav-open .nt-bar:nth-child(2) { transform: translateY(-2.75px) rotate(-45de
 }
 .sheet-group a[aria-current="page"] { color: var(--ox); font-style: italic; }
 .sheet-cta { align-self: flex-start; }
+.sheet-close {
+  display: none;
+  position: absolute;
+  top: 26px; right: clamp(18px, 4vw, 40px);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 8px 0;
+  transition: color .3s;
+}
+.sheet-close:hover { color: var(--ox); }
+.sheet-close span { font-size: 14px; margin-left: 4px; }
 body.nav-open { overflow: hidden; }
-body.nav-open .mini { transform: none; }
-@media (min-width: 760px) { .sheet { display: none !important; } }
+/* on phones the header slides in over the sheet so its ✕ can close it; on
+   desktop the sheet carries its own close button and the header stays put */
+@media (max-width: 759px) { body.nav-open .mini { transform: none; } }
+@media (min-width: 760px) {
+  .sheet { padding: 110px clamp(40px, 8vw, 120px) 64px; }
+  .sheet-close { display: block; }
+  .sheet-in { max-width: 1180px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 44px 48px; align-items: start; }
+  .sheet-group a { font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3; }
+  .sheet-cta { grid-column: 1 / -1; justify-self: start; }
+}
+
+/* the hero's own menu button — visible at every width so the menu is
+   reachable before the sticky header has slid in */
+.ht-end { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 26px); }
+.ht-menu { display: inline-flex !important; margin: -6px 0 -6px 0; }
+.ht-menu .nt-label { color: var(--ink-soft); }
+.ht-menu:hover .nt-bar { background: var(--ox); }
+.ht-menu:hover .nt-label { color: var(--ox); }
 
 /* breadcrumbs */
 .crumbs ol {
@@ -907,6 +941,21 @@ body.nav-open .mini { transform: none; }
 .prose figcaption { font-style: italic; font-size: 15px; color: #8b857f; margin-top: 10px; }
 .callout { border-left: 2px solid var(--ox); background: var(--mist); padding: 18px 22px; font-size: 17px; line-height: 1.55; color: var(--ink-soft); }
 .callout b { color: var(--ink); font-weight: 600; }
+
+/* guide byline + table-of-contents */
+.byline { margin-top: 22px; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.byline b { color: var(--ox); font-weight: 600; }
+.toc { border-top: 1px solid var(--line); padding-top: 18px; }
+.toc .kicker { margin-bottom: 10px; }
+.toc ol { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.toc a { font-size: 17px; text-decoration: none; color: var(--ink); border-bottom: 1px solid transparent; transition: color .3s, border-color .3s; }
+.toc a:hover { color: var(--ox); border-color: var(--ox); }
+.aside-cta { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 22px; }
+.aside-cta p { font-style: italic; font-size: 18px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 16px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: clamp(15px, 1.8vw, 17px); }
+.prose th, .prose td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); }
+.prose th { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--ox); }
+.prose .tbl { overflow-x: auto; }
 
 /* trust marks row */
 .marks { display: flex; flex-wrap: wrap; gap: 12px 36px; margin-top: clamp(28px, 4vw, 44px); padding-top: 22px; border-top: 1px solid var(--line); }
