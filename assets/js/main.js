@@ -40,8 +40,7 @@
   if (mini && heroEnd && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
       var past = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
-      mini.classList.toggle('show', past);
-      mini.setAttribute('aria-hidden', past ? 'false' : 'true');
+      mini.classList.toggle('show', past);   // CSS handles visibility, so hidden links are never focusable
     }, { threshold: 0 }).observe(heroEnd);
   }
 

@@ -117,9 +117,10 @@ a { color: inherit; }
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
   transform: translateY(-110%);
-  transition: transform .5s var(--ease);
+  visibility: hidden;                 /* off-screen AND out of the tab order until it slides in */
+  transition: transform .5s var(--ease), visibility 0s .5s;
 }
-.mini.show { transform: translateY(0); }
+.mini.show { transform: translateY(0); visibility: visible; transition-delay: 0s; }
 
 .mini-wm {
   font-size: 17px;
@@ -707,7 +708,8 @@ a { color: inherit; }
    ========================================================================== */
 
 /* header: always visible on interior pages */
-.mini.pinned { position: sticky; transform: none; transition: none; }
+.mini.pinned { position: sticky; transform: none; visibility: visible; transition: none; }
+a[href^="tel:"] { white-space: nowrap; }
 .mini-nav a[aria-current="page"] { color: var(--ink); border-bottom: 1px solid var(--ox); }
 
 /* mobile menu toggle (in the header) */
@@ -779,7 +781,14 @@ body.nav-open .nt-bar:nth-child(2) { transform: translateY(-2.75px) rotate(-45de
 body.nav-open { overflow: hidden; }
 /* on phones the header slides in over the sheet so its ✕ can close it; on
    desktop the sheet carries its own close button and the header stays put */
-@media (max-width: 759px) { body.nav-open .mini { transform: none; } }
+@media (max-width: 759px) { body.nav-open .mini { transform: none; visibility: visible; transition-delay: 0s; } }
+
+/* small layout utilities (keep markup free of inline styles) */
+.mt0 { margin-top: 0 !important; }
+.mt-sm { margin-top: 8px !important; }
+.mt-md { margin-top: 28px !important; }
+.flush { margin-top: 0 !important; border-top: 0 !important; padding-top: 0 !important; }
+.related .area-list { display: grid; }
 @media (min-width: 760px) {
   .sheet { padding: 110px clamp(40px, 8vw, 120px) 64px; }
   .sheet-close { display: block; }
