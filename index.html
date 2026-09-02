@@ -24,23 +24,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=2b2ef939">
+  <link rel="stylesheet" href="/assets/css/style.css?v=04e6a954">
 
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Store","@id":"https://anodyneantiques.com/#business","name":"Anodyne Antiques","description":"Curated antiques shop in Naples, Florida — furniture, sterling silver, art, porcelain, and curiosities — plus estate services, evaluations, consignment and auction placement for families, executors and trustees across Southwest Florida.","url":"https://anodyneantiques.com/","telephone":"+12394048505","email":"anodyneantiques@gmail.com","image":"https://anodyneantiques.com/assets/img/og.jpg","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"6240 Shirley St, Ste 104","addressLocality":"Naples","addressRegion":"FL","postalCode":"34109","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"11:00","closes":"15:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"16:00"}],"areaServed":[{"@type":"City","name":"Naples"},{"@type":"City","name":"Marco Island"},{"@type":"City","name":"Bonita Springs"},{"@type":"City","name":"Estero"},{"@type":"City","name":"Fort Myers"},{"@type":"City","name":"Cape Coral"}]}]}</script>
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; } .lazyfade { opacity: 1 !important; }</style></noscript>
 </head>
 <body class="home page-home">
 
-  <!-- Site header: slides in after the hero on the home page, pinned on every other page -->
+  <!-- Site header: sticky on every page; full nav ≥760px, hamburger + sheet below that -->
   <header class="mini" id="miniHeader">
     <a class="mini-wm" href="/">Anodyne<span>Antiques</span></a>
     <nav class="mini-nav" aria-label="Primary">
-      <a href="/antiques/">Antiques</a>
-      <a href="/estate-services/">Estate Services</a>
-      <a href="/auction-services/">Auctions</a>
-      <a href="/sell/">Sell to Us</a>
-      <a href="/guides/">Guides</a>
-      <a href="/contact/">Visit</a>
+      <div class="nav-item has-sub"><a href="/antiques/">Shop</a><button class="sub-toggle" type="button" aria-expanded="false" aria-controls="sub-shop" aria-label="Open Shop menu"></button><div class="sub" id="sub-shop"><a href="/antiques/">Antiques &amp; curiosities</a><a href="/art/">Art, gilt &amp; mirrors</a><a href="/boutique/">The Boutique</a><a href="/boutique/gifts/">Gifts</a><a href="/boutique/home-decor/">Home décor</a><a href="/boutique/candles/">Candles</a><a href="/boutique/fabrics-and-pillows/">Fabrics &amp; pillows</a><a href="/boutique/holiday/">Holiday</a></div></div>
+      <div class="nav-item has-sub"><a href="/estate-services/">Estate Services</a><button class="sub-toggle" type="button" aria-expanded="false" aria-controls="sub-estate" aria-label="Open Estate Services menu"></button><div class="sub" id="sub-estate"><a href="/estate-services/">Estate services</a><a href="/estate-services/estate-liquidation/">Estate liquidation</a><a href="/auction-services/">Auction placement</a><a href="/appraisals/">Evaluations &amp; appraisal guidance</a><a href="/consignment/">Consignment</a><a href="/areas/">Areas we serve</a><a href="/services/">All services</a></div></div>
+      <div class="nav-item has-sub"><a href="/sell/">Sell to Us</a><button class="sub-toggle" type="button" aria-expanded="false" aria-controls="sub-sell" aria-label="Open Sell to Us menu"></button><div class="sub" id="sub-sell"><a href="/sell/">What we buy</a><a href="/sell/sterling-silver/">Sterling silver</a><a href="/sell/antique-furniture/">Antique furniture</a><a href="/sell/paintings-and-art/">Paintings &amp; art</a><a href="/sell/porcelain-and-china/">Porcelain &amp; china</a></div></div>
+      <div class="nav-item"><a href="/designers/">Designers</a></div>
+      <div class="nav-item"><a href="/guides/">Guides</a></div>
+      <div class="nav-item"><a href="/contact/">Visit</a></div>
     </nav>
     <a class="pill pill-ox mini-cta" href="/#visit">Plan a Visit</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span class="nt-bar"></span><span class="nt-bar"></span><span class="nt-label">Menu</span></button>
@@ -51,6 +51,7 @@
     <button class="sheet-close" type="button" aria-label="Close menu">Close <span aria-hidden="true">✕</span></button>
     <div class="sheet-in">
       <div class="sheet-group"><span class="kicker">The shop</span><a href="/" aria-current="page">Home</a><a href="/antiques/">Antiques &amp; curiosities</a><a href="/art/">Art, gilt &amp; mirrors</a></div>
+      <div class="sheet-group"><span class="kicker">The boutique</span><a href="/boutique/">Gifts &amp; home décor</a><a href="/boutique/gifts/">Gifts</a><a href="/boutique/home-decor/">Home décor</a><a href="/boutique/candles/">Candles</a><a href="/boutique/fabrics-and-pillows/">Fabrics &amp; pillows</a><a href="/boutique/holiday/">Holiday</a><a href="/designers/">For interior designers</a></div>
       <div class="sheet-group"><span class="kicker">Services</span><a href="/estate-services/">Estate services</a><a href="/auction-services/">Auction placement</a><a href="/appraisals/">Evaluations &amp; appraisal guidance</a><a href="/consignment/">Consignment</a><a href="/sell/">Sell to us</a><a href="/areas/">Areas we serve</a><a href="/services/">All services</a></div>
       <div class="sheet-group"><span class="kicker">Reading</span><a href="/guides/">Guides &amp; advice</a></div>
       <div class="sheet-group"><span class="kicker">Visit</span><a href="/about/">About the shop</a><a href="/contact/">Contact, hours &amp; directions</a></div>
@@ -60,15 +61,6 @@
 
   <!-- ============ HERO — “The Table” ============ -->
   <section class="hero" id="top">
-    <div class="hero-top">
-      <span class="ht-left">Antiques &amp; Curiosities</span>
-      <span class="ht-mid">Naples, <b>Florida</b></span>
-      <span class="ht-end">
-        <a class="ht-right" href="tel:+12394048505">(239)&nbsp;404-8505</a>
-        <button class="nav-toggle ht-menu" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span class="nt-bar"></span><span class="nt-bar"></span><span class="nt-label">Menu</span></button>
-      </span>
-    </div>
-
     <div class="flora" aria-hidden="true">
       <img class="fl-sprig" src="/assets/img/flora-sprig.webp" alt="" width="210" height="640" data-speed="0.03" data-rot="-160" decoding="async">
       <img class="fl-tulip" src="/assets/img/flora-tulip.webp" alt="" width="233" height="640" data-speed="0.02" data-rot="150" decoding="async">
@@ -106,14 +98,12 @@
       <p class="hero-quote">“A shop for people who like their things with a little history&nbsp;attached.”</p>
       <a class="pill pill-ink" href="#visit">Plan Your Visit</a>
     </div>
-
-    <div id="heroEnd"></div>
   </section>
 
   <!-- ============ MARQUEE ============ -->
   <div class="marquee" aria-hidden="true">
     <div class="mq-track">
-      <span>Furniture <b>·</b> Sterling Silver <b>·</b> Fine Art <b>·</b> Porcelain <b>·</b> Lighting <b>·</b> Curiosities <b>·</b>&nbsp;</span><span>Furniture <b>·</b> Sterling Silver <b>·</b> Fine Art <b>·</b> Porcelain <b>·</b> Lighting <b>·</b> Curiosities <b>·</b>&nbsp;</span>
+      <span>Furniture <b>·</b> Sterling Silver <b>·</b> Fine Art <b>·</b> Delft &amp; Blue-and-White <b>·</b> Candles <b>·</b> Pillows <b>·</b> Gifts <b>·</b> Holiday <b>·</b>&nbsp;</span><span>Furniture <b>·</b> Sterling Silver <b>·</b> Fine Art <b>·</b> Delft &amp; Blue-and-White <b>·</b> Candles <b>·</b> Pillows <b>·</b> Gifts <b>·</b> Holiday <b>·</b>&nbsp;</span>
     </div>
   </div>
 
@@ -152,6 +142,53 @@
     <div class="col-closer reveal">
       <figure><img src="/assets/img/hero-still-life.webp" alt="Still life of gilded clock, leather books and porcelain vase" width="900" height="1200" loading="lazy" decoding="async"><span class="cc-tag">from the archive</span></figure>
       <p>…and always, <em>the odd beautiful thing</em> that refused to be categorized.</p>
+    </div>
+  </section>
+
+  <!-- ============ BOUTIQUE ============ -->
+  <section class="services-home" id="boutique">
+    <header class="sec-head reveal">
+      <span class="kicker">The boutique</span>
+      <h2>Gifts, candles, and flowers that <em>never fade</em></h2>
+      <p>Between the antiques and the gallery: a line of candles with their fragrance notes on the label, pillows made from paintings, Delft and blue-and-white by the shelf, faux hand-painted florals — and, come December, a shop that goes all in on the&nbsp;holidays.</p>
+    </header>
+    <div class="svc-grid">
+      <a class="svc-card reveal" href="/boutique/gifts/">
+        <span class="svc-n">01</span>
+        <h3>Gifts</h3>
+        <p>For the person who has everything: candles, blue-and-white, silver, small antiques. We ship anywhere.</p>
+        <span class="svc-more">Gift ideas</span>
+      </a>
+      <a class="svc-card reveal" href="/boutique/home-decor/">
+        <span class="svc-n">02</span>
+        <h3>Home décor</h3>
+        <p>Delft, planters and pots, faux florals hand-painted by an artist, pillows, paintings, lamps and mirrors.</p>
+        <span class="svc-more">Home décor</span>
+      </a>
+      <a class="svc-card reveal" href="/boutique/candles/">
+        <span class="svc-n">03</span>
+        <h3>Candles</h3>
+        <p>By Sharon Lynch Collections — each with its top, heart and base notes written out like a recipe.</p>
+        <span class="svc-more">The candles</span>
+      </a>
+      <a class="svc-card reveal" href="/boutique/fabrics-and-pillows/">
+        <span class="svc-n">04</span>
+        <h3>Fabrics &amp; pillows</h3>
+        <p>Her floral paintings, printed onto fabric and sewn into pillows. In stock, or made to order.</p>
+        <span class="svc-more">Fabrics &amp; pillows</span>
+      </a>
+      <a class="svc-card reveal" href="/boutique/holiday/">
+        <span class="svc-n">05</span>
+        <h3>Holiday</h3>
+        <p>New this season: ornaments carrying her floral designs, plus the silver and porcelain for a serious table.</p>
+        <span class="svc-more">Holiday at Anodyne</span>
+      </a>
+      <a class="svc-card reveal" href="/designers/">
+        <span class="svc-n">06</span>
+        <h3>For designers</h3>
+        <p>Trade accounts, sourcing, custom textiles, faux florals for installs, and delivery to the project.</p>
+        <span class="svc-more">To the trade</span>
+      </a>
     </div>
   </section>
 
@@ -286,6 +323,7 @@
       <div class="foot-col"><span class="foot-h">Services</span><a href="/estate-services/">Estate services</a><a href="/estate-services/estate-liquidation/">Estate liquidation</a><a href="/auction-services/">Auction placement</a><a href="/appraisals/">Evaluations &amp; appraisal guidance</a><a href="/consignment/">Consignment</a><a href="/services/">All services</a></div>
       <div class="foot-col"><span class="foot-h">We buy</span><a href="/sell/">Sell to us</a><a href="/sell/sterling-silver/">Sterling silver</a><a href="/sell/antique-furniture/">Antique furniture</a><a href="/sell/paintings-and-art/">Paintings &amp; art</a><a href="/sell/porcelain-and-china/">Porcelain &amp; china</a></div>
       <div class="foot-col"><span class="foot-h">The shop</span><a href="/antiques/">Antiques &amp; curiosities</a><a href="/art/">Art, gilt &amp; mirrors</a><a href="/about/">About</a><a href="/contact/">Contact &amp; hours</a></div>
+      <div class="foot-col"><span class="foot-h">The boutique</span><a href="/boutique/">Gifts &amp; home décor</a><a href="/boutique/gifts/">Gifts</a><a href="/boutique/home-decor/">Home décor</a><a href="/boutique/candles/">Candles</a><a href="/boutique/fabrics-and-pillows/">Fabrics &amp; pillows</a><a href="/boutique/holiday/">Holiday</a><a href="/designers/">For interior designers</a></div>
       <div class="foot-col"><span class="foot-h">Areas we serve</span><a href="/estate-services/bonita-springs/">Bonita Springs</a><a href="/estate-services/cape-coral/">Cape Coral</a><a href="/estate-services/estero/">Estero</a><a href="/estate-services/fort-myers/">Fort Myers</a><a href="/estate-services/marco-island/">Marco Island</a><a href="/estate-services/old-naples/">Old Naples</a><a href="/estate-services/park-shore/">Park Shore</a><a href="/estate-services/pelican-bay/">Pelican Bay</a><a href="/estate-services/port-royal/">Port Royal</a><a href="/areas/">All areas</a></div>
       <div class="foot-col"><span class="foot-h">Guides</span><a href="/guides/estate-sale-vs-auction-vs-buyout/">Estate Sale vs. Auction vs. Buyout</a><a href="/guides/florida-probate-and-personal-property/">Florida Probate &amp; Personal Property</a><a href="/guides/how-high-end-auction-houses-work/">How Auction Houses Work</a><a href="/guides/how-to-choose-an-estate-liquidator/">Choosing an Estate Liquidator</a><a href="/guides/how-to-read-silver-hallmarks/">Reading Silver Hallmarks</a><a href="/guides/">All guides</a></div>
       <div class="foot-col foot-visit"><span class="foot-h">Visit</span><address>6240 Shirley St, Ste 104<br>Naples, FL 34109</address><a href="tel:+12394048505">(239)&nbsp;404-8505</a><a href="mailto:anodyneantiques@gmail.com">anodyneantiques@gmail.com</a><span class="foot-hours">Mon–Fri 11–3 · Sat 11–4 · Sun closed · &amp; by appointment</span></div>
@@ -304,6 +342,6 @@
     <div class="foot-legal">© <span id="yr">2026</span> Anodyne Antiques. All the old things, all rights reserved.</div>
   </footer>
 
-  <script src="/assets/js/main.js?v=d2bf9183" defer></script>
+  <script src="/assets/js/main.js?v=943c643f" defer></script>
 </body>
 </html>

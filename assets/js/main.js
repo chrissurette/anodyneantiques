@@ -34,15 +34,33 @@
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---------- mini header after hero ---------- */
-  var mini = document.getElementById('miniHeader');
-  var heroEnd = document.getElementById('heroEnd');
-  if (mini && heroEnd && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      var past = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
-      mini.classList.toggle('show', past);   // CSS handles visibility, so hidden links are never focusable
-    }, { threshold: 0 }).observe(heroEnd);
+  /* ---------- desktop nav dropdowns (hover via CSS; click/keyboard here) ---------- */
+  var subToggles = Array.prototype.slice.call(document.querySelectorAll('.sub-toggle'));
+  if (subToggles.length) {
+    var closeSubs = function (except) {
+      subToggles.forEach(function (b) {
+        var item = b.parentElement;
+        if (item !== except) { item.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); }
+      });
+    };
+    subToggles.forEach(function (b) {
+      b.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var item = b.parentElement;
+        var open = !item.classList.contains('open');
+        closeSubs(item);
+        item.classList.toggle('open', open);
+        b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+    document.addEventListener('click', function () { closeSubs(null); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSubs(null); });
   }
+
+  /* ---------- header: floating until the page scrolls ---------- */
+  var onHdr = function () { document.body.classList.toggle('scrolled', (window.scrollY || 0) > 8); };
+  onHdr();
+  window.addEventListener('scroll', onHdr, { passive: true });
 
   /* ---------- hero parallax (collage cards + botanical sprites) ---------- */
   if (!reduced) {

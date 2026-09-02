@@ -14,6 +14,7 @@
   --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --sans:  'Inter', system-ui, -apple-system, sans-serif;
   --ease:  cubic-bezier(.22, .61, .21, 1);
+  --hdr:   67px;   /* sticky header height — heroes pad themselves down by this */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -104,23 +105,26 @@ a { color: inherit; }
    ========================================================================== */
 
 .mini {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: sticky;
+  top: 0;
   z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   padding: 12px clamp(18px, 4vw, 40px);
+  margin-bottom: calc(var(--hdr) * -1);   /* let the hero run up underneath it */
   background: rgba(255,255,255,.82);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
-  transform: translateY(-110%);
-  visibility: hidden;                 /* off-screen AND out of the tab order until it slides in */
-  transition: transform .5s var(--ease), visibility 0s .5s;
+  transition: background .35s, border-color .35s;
 }
-.mini.show { transform: translateY(0); visibility: visible; transition-delay: 0s; }
+/* desktop: the items float over the hero until the page scrolls */
+@media (min-width: 760px) {
+  .mini { background: transparent; border-bottom-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  body.scrolled .mini { background: rgba(255,255,255,.82); border-bottom-color: var(--line); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+}
 
 .mini-wm {
   font-size: 17px;
@@ -139,7 +143,7 @@ a { color: inherit; }
   color: var(--ink-soft);
   margin-top: 3px;
 }
-.mini-nav { display: none; gap: 26px; }
+.mini-nav { display: none; gap: 22px; }
 .mini-nav a {
   font-size: 16px;
   text-decoration: none;
@@ -147,6 +151,31 @@ a { color: inherit; }
   transition: color .3s;
 }
 .mini-nav a:hover { color: var(--ox); }
+
+/* dropdown groups in the desktop nav */
+.nav-item { position: relative; display: flex; align-items: center; gap: 1px; }
+.nav-item.has-sub::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 18px; }   /* hover bridge to the panel */
+.sub-toggle {
+  background: none; border: 0; padding: 6px 4px; margin: 0; cursor: pointer;
+  color: var(--ink-soft); display: inline-flex; align-items: center; transition: color .3s, transform .3s var(--ease);
+}
+.sub-toggle::before { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); }
+.nav-item:hover .sub-toggle, .nav-item.open .sub-toggle { color: var(--ox); }
+.nav-item.open .sub-toggle { transform: rotate(180deg); }
+.sub {
+  position: absolute; top: calc(100% + 14px); left: -20px;
+  min-width: 250px; padding: 12px 0;
+  background: rgba(255,255,255,.97);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 44px rgba(22,20,18,.14);
+  display: none; flex-direction: column;
+  z-index: 60;
+}
+.nav-item:hover .sub, .nav-item:focus-within .sub, .nav-item.open .sub { display: flex; }
+.mini-nav .sub a { display: block; padding: 8px 22px; font-size: 16px; color: var(--ink); border: 0; }
+.mini-nav .sub a:hover { color: var(--ox); background: var(--mist); }
+.mini-nav .sub a[aria-current="page"] { color: var(--ox); font-style: italic; }
 .mini-cta { padding: 11px 22px; font-size: 13px; }
 
 @media (min-width: 760px) {
@@ -160,6 +189,7 @@ a { color: inherit; }
 .hero {
   position: relative;
   min-height: 100svh;
+  padding-top: var(--hdr);           /* the header floats over this band */
   display: flex;
   flex-direction: column;
   background: var(--mist);
@@ -247,32 +277,13 @@ a { color: inherit; }
   .fl-hyd   { width: 212px; }
 }
 
-.hero-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px clamp(18px, 4vw, 40px) 0;
-  font-family: var(--sans);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  z-index: 6;
-}
-.hero-top b { color: var(--ox); font-weight: 600; }
-.hero-top a { text-decoration: none; color: var(--ink-soft); transition: color .3s; }
-.hero-top a:hover { color: var(--ox); }
-.ht-left { display: none; }
-@media (min-width: 700px) { .ht-left { display: block; } }
-
 .hero-word {
   text-align: center;
   font-size: clamp(72px, 17.5vw, 220px);
   font-weight: 600;
   letter-spacing: .03em;
   line-height: .95;
-  margin-top: clamp(18px, 4vh, 48px);
+  margin-top: clamp(30px, 6vh, 64px);
   user-select: none;
   z-index: 1;
   animation: wordIn 1.4s var(--ease) both;
@@ -427,8 +438,6 @@ a { color: inherit; }
 @media (min-width: 760px) {
   .hero-bottom { flex-direction: row; align-items: flex-end; justify-content: space-between; }
 }
-
-#heroEnd { position: absolute; bottom: 0; height: 1px; width: 1px; }
 
 /* ==========================================================================
    MARQUEE
@@ -707,10 +716,8 @@ a { color: inherit; }
    INTERIOR PAGES — shared shell for every page that isn't the home hero
    ========================================================================== */
 
-/* header: always visible on interior pages */
-.mini.pinned { position: sticky; transform: none; visibility: visible; transition: none; }
 a[href^="tel:"] { white-space: nowrap; }
-.mini-nav a[aria-current="page"] { color: var(--ink); border-bottom: 1px solid var(--ox); }
+.mini-nav > .nav-item > a[aria-current="page"] { color: var(--ink); border-bottom: 1px solid var(--ox); }
 
 /* mobile menu toggle (in the header) */
 .nav-toggle {
@@ -779,9 +786,8 @@ body.nav-open .nt-bar:nth-child(2) { transform: translateY(-2.75px) rotate(-45de
 .sheet-close:hover { color: var(--ox); }
 .sheet-close span { font-size: 14px; margin-left: 4px; }
 body.nav-open { overflow: hidden; }
-/* on phones the header slides in over the sheet so its ✕ can close it; on
-   desktop the sheet carries its own close button and the header stays put */
-@media (max-width: 759px) { body.nav-open .mini { transform: none; visibility: visible; transition-delay: 0s; } }
+/* the sticky header sits above the sheet, so on phones its ✕ closes the menu;
+   on desktop the sheet carries its own close button */
 
 /* small layout utilities (keep markup free of inline styles) */
 .mt0 { margin-top: 0 !important; }
@@ -796,14 +802,6 @@ body.nav-open { overflow: hidden; }
   .sheet-group a { font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3; }
   .sheet-cta { grid-column: 1 / -1; justify-self: start; }
 }
-
-/* the hero's own menu button — visible at every width so the menu is
-   reachable before the sticky header has slid in */
-.ht-end { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 26px); }
-.ht-menu { display: inline-flex !important; margin: -6px 0 -6px 0; }
-.ht-menu .nt-label { color: var(--ink-soft); }
-.ht-menu:hover .nt-bar { background: var(--ox); }
-.ht-menu:hover .nt-label { color: var(--ox); }
 
 /* breadcrumbs */
 .crumbs ol {
@@ -827,7 +825,7 @@ body.nav-open { overflow: hidden; }
 /* page hero: text-led, one framed photo — no collage, no flora */
 .page-hero {
   background: var(--mist);
-  padding: clamp(28px, 5vw, 56px) clamp(18px, 4vw, 40px) clamp(48px, 8vw, 96px);
+  padding: calc(var(--hdr) + clamp(28px, 5vw, 56px)) clamp(18px, 4vw, 40px) clamp(48px, 8vw, 96px);
 }
 .page-hero-in {
   max-width: 1280px;
