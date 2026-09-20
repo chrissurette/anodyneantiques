@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Anodyne Antiques — anodyneantiques.com
+   Naples Antiques and Estate Services — naplesantiquesllc.com
    All-serif · white/near-black · oxblood accent
    ========================================================================== */
 
@@ -177,8 +177,22 @@ a { color: inherit; }
 .mini-nav .sub a:hover { color: var(--ox); background: var(--mist); }
 .mini-nav .sub a[aria-current="page"] { color: var(--ox); font-style: italic; }
 .mini-cta { padding: 11px 22px; font-size: 13px; }
+.mini-wm, .mini-nav .nav-item > a, .mini-cta { white-space: nowrap; }
 
-@media (min-width: 760px) {
+/* phones: wordmark + CTA + Menu all have to share ~340px */
+@media (max-width: 479px) {
+  .mini { gap: 10px; }
+  .mini-wm { font-size: 13px; letter-spacing: .14em; }
+  .mini-wm span { font-size: 7px; letter-spacing: .3em; }
+  .mini-cta { padding: 9px 13px; font-size: 11px; letter-spacing: .08em; }
+}
+@media (max-width: 349px) {
+  .mini-cta { display: none; }
+}
+
+/* the two-word wordmark needs more room than the old one did: the full nav
+   appears from 980px; 760–979px keeps the floating header + Menu button */
+@media (min-width: 980px) {
   .mini-nav { display: flex; }
 }
 
@@ -234,7 +248,7 @@ a { color: inherit; }
 /* — tablets landscape / small laptops (760–1179px): tulip hangs on the right edge, below the wordmark — */
 @media (min-width: 760px) {
   .fl-sprig { width: clamp(70px, 9vw, 110px); left: 0.5vw; top: -2vh; }
-  .fl-tulip { width: clamp(64px, 8vw, 84px); right: -6px; top: 17%; }
+  .fl-tulip { width: clamp(64px, 8vw, 84px); right: -6px; top: 3%; }   /* above the S, clear of the stamp */
   .fl-rose  { width: clamp(95px, 12vw, 135px); left: -1.8vw; top: 52%; }
   .fl-hyd   { width: clamp(100px, 12.5vw, 150px); right: -1.5vw; top: 47%; }
 }
@@ -279,7 +293,7 @@ a { color: inherit; }
 
 .hero-word {
   text-align: center;
-  font-size: clamp(72px, 17.5vw, 220px);
+  font-size: clamp(72px, 21vw, 264px);   /* six letters (NAPLES), sized to span what the old seven did */
   font-weight: 600;
   letter-spacing: .03em;
   line-height: .95;
@@ -310,10 +324,14 @@ a { color: inherit; }
   font-size: clamp(12px, 1.6vw, 17px);
   font-weight: 500;
   font-style: italic;
-  letter-spacing: .58em;
-  text-indent: .58em;
+  letter-spacing: .3em;
+  text-indent: .3em;
+  line-height: 1.2;
   color: var(--ink-soft);
-  margin-top: clamp(10px, 1.6vh, 18px);
+  margin-bottom: clamp(8px, 1.4vh, 16px);   /* sits above the wordmark, clear of the collage */
+}
+@media (min-width: 760px) {
+  .hw-sub { letter-spacing: .58em; text-indent: .58em; }
 }
 @keyframes wordIn {
   from { opacity: 0; transform: translateY(26px); }
@@ -587,6 +605,54 @@ a { color: inherit; }
 @media (min-width: 640px) { .acq-ctas { flex-direction: row; justify-content: center; } }
 
 /* ==========================================================================
+   JEWELRY BRANCH — Naples Estate Jewelry
+   .nej = the big ink band on the home page (partials/nej-band.html)
+   .nej-ribbon = the one-line strip on sell / estate pages (partials/nej-ribbon.html)
+   ========================================================================== */
+
+.nej { position: relative; overflow: hidden; background: var(--ink); color: #fff; padding: clamp(120px, 19vw, 280px) clamp(18px, 4vw, 40px) clamp(80px, 11vw, 140px); }
+/* outlined word, same stroke-under / fill-over trick as the hero and footer wordmarks */
+.nej-word {
+  position: absolute; left: 0; right: 0; top: 0;
+  text-align: center;
+  font-size: clamp(72px, 19.5vw, 300px);
+  font-weight: 600;
+  letter-spacing: .03em;
+  line-height: 1;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255,255,255,.3);
+  transform: translateY(-24%);
+  user-select: none;
+}
+.nej-word::after { content: attr(data-t); position: absolute; inset: 0; color: var(--ink); -webkit-text-stroke: 0; pointer-events: none; }
+.nej-in { position: relative; max-width: 1180px; margin: 0 auto; display: grid; gap: clamp(36px, 6vw, 80px); align-items: center; }
+@media (min-width: 900px) { .nej-in { grid-template-columns: 1.15fr .85fr; } }
+.nej h2 { font-size: clamp(38px, 6vw, 64px); font-weight: 500; line-height: 1.06; margin-top: 14px; }
+.nej h2 em { font-style: italic; font-weight: 400; }
+.nej-lede { margin-top: 22px; max-width: 560px; font-size: clamp(18px, 2.1vw, 21px); color: rgba(255,255,255,.8); }
+.nej-ctas { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; }
+.nej .pill-paper, .nej-ribbon .pill-paper { color: var(--ink); }
+/* the photo: same white polaroid card + italic caption as the hero collage */
+.nej-photo { position: relative; justify-self: center; width: min(100%, 400px); background: #fff; padding: 10px 10px 40px; box-shadow: 0 26px 70px rgba(0,0,0,.55); rotate: 2.5deg; }
+.nej-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.nej-photo .cap { bottom: 10px; left: 16px; font-size: 16px; }
+@media (min-width: 900px) { .nej-photo { justify-self: end; margin-right: 18px; } }   /* keeps the tilted corner off the page edge */
+/* what the branch handles: one wrapped row under both columns */
+.nej-list { position: relative; max-width: 1180px; margin: clamp(48px, 7vw, 84px) auto 0; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.18); }
+.nej-list ul { list-style: none; margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px 38px; }
+.nej-list li { font-size: clamp(19px, 2.1vw, 22px); line-height: 1.3; padding-left: 28px; position: relative; }
+.nej-list li::before { content: "✳"; position: absolute; left: 0; top: 0; color: #C58E89; }   /* oxblood, lifted for contrast on ink */
+.nej-same { margin-top: 22px; font-style: italic; font-size: 17px; color: rgba(255,255,255,.7); }
+
+.nej-ribbon { background: var(--ink); color: #fff; padding: 26px clamp(18px, 4vw, 40px); }
+.nej-ribbon-in { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+@media (min-width: 860px) { .nej-ribbon-in { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; } }
+.nej-ribbon p { font-size: clamp(19px, 2.1vw, 22px); line-height: 1.35; color: rgba(255,255,255,.86); }
+.nej-ribbon p b { font-weight: 600; color: #fff; }
+.nej-ribbon .pill { white-space: nowrap; }
+
+/* ==========================================================================
    VISIT
    ========================================================================== */
 
@@ -645,7 +711,7 @@ a { color: inherit; }
 .foot-word {
   position: relative;
   text-align: center;
-  font-size: clamp(80px, 19vw, 260px);
+  font-size: clamp(80px, 23vw, 320px);
   font-weight: 600;
   letter-spacing: .03em;
   line-height: 1;
@@ -743,7 +809,7 @@ a[href^="tel:"] { white-space: nowrap; }
 }
 body.nav-open .nt-bar:nth-child(1) { transform: translateY(2.75px) rotate(45deg); }
 body.nav-open .nt-bar:nth-child(2) { transform: translateY(-2.75px) rotate(-45deg); }
-@media (min-width: 760px) { .nav-toggle { display: none; } }
+@media (min-width: 980px) { .nav-toggle { display: none; } }
 
 /* mobile menu sheet */
 .sheet {

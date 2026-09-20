@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /contact/thanks/
 
-Sitemap: https://anodyneantiques.com/sitemap.xml
+Sitemap: https://naplesantiquesllc.com/sitemap.xml

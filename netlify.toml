@@ -1,4 +1,4 @@
-# Netlify configuration for anodyneantiques.com
+# Netlify configuration for naplesantiquesllc.com
 # Static site — no build step on Netlify. `node build.mjs` runs locally and
 # writes the deployable site into staging/, whose CONTENTS are pushed to GitHub.
 # This file is the source of truth; the build copies it into staging/.

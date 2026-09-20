@@ -1,6 +1,6 @@
-# Anodyne Antiques — deployable site
+# Naples Antiques and Estate Services — deployable site
 
-This folder is the complete, ready-to-deploy website for **anodyneantiques.com**.
+This folder is the complete, ready-to-deploy website for **naplesantiquesllc.com**.
 Static files only — nothing for Netlify to build.
 
 **This folder is generated.** It is rewritten every time `update-staging.bat` (or

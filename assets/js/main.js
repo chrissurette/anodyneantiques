@@ -1,4 +1,4 @@
-/* Anodyne Antiques — interactions
+/* Naples Antiques and Estate Services — interactions
    Scroll reveals, hero parallax, mini header, image fade-ins.
    Everything respects prefers-reduced-motion. */
 
