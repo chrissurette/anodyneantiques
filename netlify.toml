@@ -6,6 +6,34 @@
 [build]
   publish = "."
 
+# Old-domain forwarding. Netlify serves domain aliases as-is (only the primary's
+# www/apex pair redirects by itself), so the previous domain needs explicit,
+# forced 301s — path for path. This file is not publicly served (404), so the
+# old name stays invisible to visitors. Keep for at least a year.
+[[redirects]]
+  from = "https://anodyneantiques.com/*"
+  to = "https://naplesantiquesllc.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.anodyneantiques.com/*"
+  to = "https://naplesantiquesllc.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://anodyneantiques.com/*"
+  to = "https://naplesantiquesllc.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.anodyneantiques.com/*"
+  to = "https://naplesantiquesllc.com/:splat"
+  status = 301
+  force = true
+
 # HTML: always revalidate so content edits show up immediately.
 # (Extensionless page URLs like /estate-services/ get Netlify's default
 #  max-age=0, must-revalidate, so no extra rule is needed for them.)
