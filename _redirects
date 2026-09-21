@@ -1,0 +1,37 @@
+# Netlify redirects — copied into staging/ by build.mjs. Processed BEFORE the rules in netlify.toml.
+#
+# This domain used to belong to the sister jewelry business. Google still lists their product,
+# Spanish and service pages under these paths, and outside sites still link to them, so every
+# one is sent back to the same path on their site (forced 301). Keep permanently.
+# Do NOT build pages at any of these addresses — the build warns if you try
+# (site.json → reservedForSisterSite mirrors this list).
+#
+# Shared paths that stay OURS and are never redirected: /  /about/  /contact/  /estate-services/  /sell/  /services/
+
+/shop                     https://naplesestatejewelry.com/shop                     301!
+/shop/*                   https://naplesestatejewelry.com/shop/:splat              301!
+/es                       https://naplesestatejewelry.com/es                       301!
+/es/*                     https://naplesestatejewelry.com/es/:splat                301!
+/estate-jewelry           https://naplesestatejewelry.com/estate-jewelry           301!
+/gold-services            https://naplesestatejewelry.com/gold-services            301!
+/gold-services/*          https://naplesestatejewelry.com/gold-services/:splat     301!
+/silver-services          https://naplesestatejewelry.com/silver-services          301!
+/silver-services/*        https://naplesestatejewelry.com/silver-services/:splat   301!
+/jewelry-appraisal        https://naplesestatejewelry.com/jewelry-appraisal        301!
+/jewelry-appraisal/*      https://naplesestatejewelry.com/jewelry-appraisal/:splat 301!
+/bullion                  https://naplesestatejewelry.com/bullion                  301!
+/diamond-buyers           https://naplesestatejewelry.com/diamond-buyers           301!
+/watch-buyers             https://naplesestatejewelry.com/watch-buyers             301!
+/free-evaluation          https://naplesestatejewelry.com/free-evaluation          301!
+/faq                      https://naplesestatejewelry.com/faq                      301!
+/reviews                  https://naplesestatejewelry.com/reviews                  301!
+/spot-prices              https://naplesestatejewelry.com/spot-prices              301!
+/trade-in                 https://naplesestatejewelry.com/trade-in                 301!
+/estate-services/selling-inherited-jewelry  https://naplesestatejewelry.com/estate-services/selling-inherited-jewelry  301!
+/sell/naples              https://naplesestatejewelry.com/sell/naples              301!
+/sell/marco-island        https://naplesestatejewelry.com/sell/marco-island        301!
+/sell/bonita-springs      https://naplesestatejewelry.com/sell/bonita-springs      301!
+/sell/estero              https://naplesestatejewelry.com/sell/estero              301!
+/sell/fort-myers          https://naplesestatejewelry.com/sell/fort-myers          301!
+/sell/cape-coral          https://naplesestatejewelry.com/sell/cape-coral          301!
+/sell/dont-melt-it        https://naplesestatejewelry.com/sell/dont-melt-it        301!
